@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tgbn-leakage-audit"
+version = "0.9.0"
+description = "Label-window probe and leakage-free evaluation stream for TGB node affinity prediction (partial release accompanying the preprint)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Yuhang Wang"}, {name = "Dongmei Li"}, {name = "Yuze Sun"}, {name = "Xiaolong Qu"},
+           {name = "Yanxiang Wang"}, {name = "Lei Yao"}]
+dependencies = ["numpy>=1.24", "scipy>=1.10"]
+
+[project.optional-dependencies]
+tgb = ["py-tgb==2.3.0"]
+csv = ["pandas>=1.5"]
+plot = ["matplotlib>=3.6"]
+test = ["pytest>=7", "pandas>=1.5"]
+all = ["py-tgb==2.3.0", "pandas>=1.5", "matplotlib>=3.6", "pytest>=7"]
+
+[project.scripts]
+label-probe = "label_probe.__main__:main"
+
+[tool.setuptools]
+packages = ["tgbn_audit", "label_probe"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
